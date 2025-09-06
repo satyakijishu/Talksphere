@@ -4,7 +4,7 @@ import axios from "axios";
 const UserContext = createContext({});
 
 export function UserContextProvider({ children }) {
-  const serverUrl = "http://localhost:5000";
+  const serverUrl = import.meta.env.VITE_BACKEND_URL ;
 
   // ✅ Default structure for user data
   const defaultUserData = {

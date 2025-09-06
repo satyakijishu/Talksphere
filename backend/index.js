@@ -16,7 +16,8 @@ const app = express();
 // ✅ Middlewares
 app.use(cors(
     {
-        origin: "https://talksphere-silk.vercel.app/"
+        origin: "*",
+        credentials: true
     }
 ));
 app.use(express.json());

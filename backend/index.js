@@ -57,9 +57,9 @@ const verifyToken = (req, res, next) => {
 // ✅ Gemini Chat Endpoint (text-only)
 // ✅ Gemini Chat Endpoint (text-only)
 
-app.use("/", (req, res) => {
-    res.send("API is running...");
-})
+// app.use("/", (req, res) => {
+//     res.send("API is running...");
+// })
 
 app.post("/api/chat", async (req, res) => {
     try {
@@ -181,6 +181,7 @@ app.post("/api/upload-drive", async (req, res) => {
 
 // ✅ Signup
 app.post("/signup", async (req, res) => {
+    console.log("Signup request body:", req.body);
     try {
         const { name, email, password } = req.body;
         const hashedPassword = await bcrypt.hash(password, 10);
@@ -196,6 +197,7 @@ app.post("/signup", async (req, res) => {
 app.post("/signin", async (req, res) => {
     try {
         const { email, password } = req.body;
+        console.log("Signin request body:", req.body);
         const user = await User.findOne({ email });
         if (!user) return res.status(404).json({ error: "User not found" });
 

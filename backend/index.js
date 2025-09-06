@@ -204,6 +204,7 @@ app.post("/signin", async (req, res) => {
 
         const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: "1d" });
         res.cookie("token", token, { httpOnly: true }).json({ message: "Logged in", user });
+        res.status(200).json({ message: "Logged in", user });
     } catch (error) {
         console.error("Signin error:", error);
         res.status(500).json({ error: "Something went wrong" });

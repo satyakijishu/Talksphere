@@ -108,7 +108,7 @@ app.post("/api/chat", async (req, res) => {
 // ✅ Endpoint for text + file uploads
 app.post("/api/chat-with-file", upload.array("files"), async (req, res) => {
     try {
-        const prompt = req.body.prompt || "";
+        const prompt = ody.prompt || "";
         const files = req.files;
 
         if (!prompt && (!files || files.length === 0)) {

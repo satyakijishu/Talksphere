@@ -15,6 +15,7 @@ function Customize2() {
       setError("Please enter an assistant name.");
       return;
     }
+    console.log("Creating assistant with name:", assistantName);
     setError("");
     setLoading(true);
 

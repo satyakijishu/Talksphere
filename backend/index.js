@@ -226,11 +226,12 @@ app.get("/api/current", verifyToken, async (req, res) => {
 });
 
 // ✅ Set Assistant
-app.post("/set-assistant", async (req, res) => {
+app.post("/set-assistant", verifyToken, async (req, res) => {
     try {
         const { assistantName, assistantImage } = req.body;
+        console.log("Set Assistant request body:", req.body);
         if (!assistantName) {
-            return res.status(400).json({ success: false, message: "Assistant name is required" });
+            return res.status(400).json({ success: true, message: "Assistant name is required" });
         }
 
         const updatedUser = await User.findByIdAndUpdate(

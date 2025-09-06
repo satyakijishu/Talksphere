@@ -42,6 +42,11 @@ const verifyToken = (req, res, next) => {
 
 // ✅ Gemini Chat Endpoint (text-only)
 // ✅ Gemini Chat Endpoint (text-only)
+
+app.use("/", (req, res) => {
+    res.send("API is running...");
+})
+
 app.post("/api/chat", async (req, res) => {
     try {
         const prompt = req.body;

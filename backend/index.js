@@ -14,7 +14,11 @@ dotenv.config();
 const app = express();
 
 // ✅ Middlewares
-app.use(cors());
+app.use(cors(
+    {
+        origin: "https://talksphere-silk.vercel.app/"
+    }
+));
 app.use(express.json());
 app.use(cookieParser());
 

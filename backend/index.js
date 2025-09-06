@@ -226,7 +226,7 @@ app.get("/api/current", verifyToken, async (req, res) => {
 });
 
 // ✅ Set Assistant
-app.post("/set-assistant", verifyToken, async (req, res) => {
+app.post("/set-assistant", async (req, res) => {
     try {
         const { assistantName, assistantImage } = req.body;
         if (!assistantName) {

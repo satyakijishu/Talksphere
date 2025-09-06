@@ -14,12 +14,21 @@ dotenv.config();
 const app = express();
 
 // ✅ Middlewares
-app.use(cors(
-    {
-        origin: "*",
-        credentials: true
+const allowedOrigins = [
+  "https://talksphere-silk.vercel.app", // your deployed frontend
+  "http://localhost:5173"               // for local dev
+];
+
+app.use(cors({
+  origin: (origin, callback) => {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("CORS not allowed"));
     }
-));
+  },
+  credentials: true
+}));
 app.use(express.json());
 app.use(cookieParser());
 

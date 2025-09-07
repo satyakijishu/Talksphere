@@ -258,9 +258,9 @@ app.post("/set-assistant", verifyToken, async (req, res) => {
 });
 
 // ✅ Logout
-app.post("/logout", (req, res) => {
-    res.clearCookie("token").json({ message: "Logged out" });
-});
+// app.post("/logout", (req, res) => {
+//     res.clearCookie("token").json({ message: "Logged out" });
+// });
 
 const port = process.env.PORT || 5000;
 app.listen(port, () => {

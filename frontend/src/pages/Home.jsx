@@ -21,12 +21,8 @@ function Home() {
   const navigate = useNavigate();
   const { user } = useContext(UserContext);
 
-  const handleGetStarted = () => {
-    if(localStorage.getItem("userData")){
-      navigate("/choose-mode");
-    } else {
-      navigate("/signin");
-    }
+    const handleGetStarted = () => {
+    navigate(user ? "/choose-mode" : "/signin");
   };
 
   const features = [

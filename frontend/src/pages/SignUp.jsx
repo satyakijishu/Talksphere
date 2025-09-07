@@ -47,6 +47,7 @@ function SignUp() {
 
       if (result.status === 201 || result.status === 200) {
         setUserData(result.data);
+        localStorage.setItem("token", result.data.token);
         navigate("/customize");
       } else {
         setError("Unexpected error. Please try again.");

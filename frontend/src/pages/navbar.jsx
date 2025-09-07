@@ -24,7 +24,7 @@ function Navbar() {
     localStorage.removeItem("userData");
     localStorage.removeItem("frontendImage");
     localStorage.removeItem("token");
-    navigate("/signin");
+    navigate("/");
   };
 
   // Close dropdowns when clicking outside

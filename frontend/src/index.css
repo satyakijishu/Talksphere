@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+*::-webkit-scrollbar{
+  display:none;
+}
+
 /* ✅ Keyframes for Dropdown Animation */
 @keyframes slideDown {
   from {

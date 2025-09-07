@@ -107,6 +107,7 @@ export function UserContextProvider({ children }) {
         {
           assistantName,
           assistantImage: frontendImage || "",
+          token: localStorage.getItem("token") || "",
         },
         { withCredentials: true }
       );

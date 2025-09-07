@@ -56,7 +56,7 @@ function Assistance() {
         }
     };
 
-    // ✅ Pause Button (Stop response - placeholder)
+    // ✅ Pause Button
     const handlePause = () => {
         alert("Pause functionality will be implemented later.");
         setLoading(false);
@@ -82,7 +82,7 @@ function Assistance() {
         recognitionRef.current = recognition;
     };
 
-    // ✅ Device Upload with Image Preview
+    // ✅ Device Upload
     const handleDeviceUpload = (event) => {
         const files = event.target.files;
         if (files.length > 0) {
@@ -98,12 +98,12 @@ function Assistance() {
         }
     };
 
-    // ✅ Drive Upload Placeholder
+    // ✅ Drive Upload
     const handleDriveUpload = () => {
         alert("Google Drive upload integration will be implemented here in the future.");
     };
 
-    // ✅ Handle Enter Key
+    // ✅ Enter Key
     const handleKeyPress = (e) => {
         if (e.key === "Enter" && !loading) {
             handleSend();
@@ -114,39 +114,39 @@ function Assistance() {
         <>
             <Navbar />
 
-            <div className="w-full min-h-[100vh] bg-gradient-to-b from-[#030353] via-[#0b0b3b] to-black flex flex-col items-center pt-6 relative">
-{/* ✅ Professional Transparent Back Button */}
-<button
-  onClick={() => navigate("/choose-mode")}
-  className="absolute top-[90px] left-6 flex items-center gap-2 p-2 text-white hover:text-blue-400 transition-colors duration-300 shadow-md rounded-full backdrop-blur-sm"
-  style={{ backgroundColor: "rgba(0,0,0,0)" }}
->
-  <HiArrowLeft className="w-6 h-6" />
-</button>
+            <div className="w-full min-h-[100vh] bg-gradient-to-b from-[#030353] via-[#0b0b3b] to-black flex flex-col items-center pt-6 px-3 sm:px-6 relative">
+                {/* ✅ Back Button */}
+                <button
+                    onClick={() => navigate("/choose-mode")}
+                    className="absolute top-[70px] sm:top-[90px] left-4 flex items-center gap-2 p-2 text-white hover:text-blue-400 transition-colors duration-300 shadow-md rounded-full backdrop-blur-sm"
+                    style={{ backgroundColor: "rgba(0,0,0,0)" }}
+                >
+                    <HiArrowLeft className="w-6 h-6 sm:w-7 sm:h-7" />
+                </button>
 
                 {/* ✅ Assistant Avatar & Name */}
-                <div className="flex flex-col items-center mb-6 mt-12">
-                    <div className="w-[120px] h-[120px] rounded-full overflow-hidden border-4 border-blue-500 shadow-lg mb-2">
+                <div className="flex flex-col items-center mb-4 sm:mb-6 mt-16 sm:mt-20">
+                    <div className="w-[90px] h-[90px] sm:w-[120px] sm:h-[120px] rounded-full overflow-hidden border-4 border-blue-500 shadow-lg mb-2">
                         <img
                             src={frontendImage || userData?.assistantImage}
                             alt="Assistant Avatar"
                             className="w-full h-full object-cover"
                         />
                     </div>
-                    <h2 className="text-white text-[22px] font-semibold">
+                    <h2 className="text-white text-[18px] sm:text-[22px] font-semibold text-center">
                         {userData?.assistantName || "Your Assistant"}
                     </h2>
                 </div>
 
                 {/* ✅ Chat Box */}
-                <div className="w-full max-w-[800px] flex flex-col backdrop-blur-lg bg-white/10 rounded-3xl shadow-2xl p-6 h-[70vh] overflow-y-auto border border-white/20 custom-scrollbar">
+                <div className="w-full max-w-[800px] flex flex-col backdrop-blur-lg bg-white/10 rounded-2xl sm:rounded-3xl shadow-2xl p-4 sm:p-6 h-[60vh] sm:h-[70vh] overflow-y-auto border border-white/20 custom-scrollbar">
                     {messages.map((msg, index) => (
                         <div
                             key={index}
-                            className={`my-3 flex ${msg.sender === "user" ? "justify-end" : "justify-start"}`}
+                            className={`my-2 sm:my-3 flex ${msg.sender === "user" ? "justify-end" : "justify-start"}`}
                         >
                             <div
-                                className={`p-4 rounded-2xl text-base leading-relaxed max-w-[70%] shadow-md ${
+                                className={`p-3 sm:p-4 rounded-2xl text-sm sm:text-base leading-relaxed max-w-[80%] sm:max-w-[70%] shadow-md ${
                                     msg.sender === "user"
                                         ? "bg-gradient-to-br from-blue-600 to-blue-800 text-white rounded-br-none"
                                         : "bg-gradient-to-br from-gray-700 to-gray-900 text-gray-100 rounded-bl-none"
@@ -162,8 +162,8 @@ function Assistance() {
                     ))}
 
                     {loading && (
-                        <div className="flex justify-start my-3">
-                            <div className="bg-gray-700 text-gray-300 rounded-2xl px-4 py-3 text-sm animate-pulse">
+                        <div className="flex justify-start my-2 sm:my-3">
+                            <div className="bg-gray-700 text-gray-300 rounded-2xl px-3 sm:px-4 py-2 sm:py-3 text-xs sm:text-sm animate-pulse">
                                 Assistant is typing...
                             </div>
                         </div>
@@ -173,19 +173,19 @@ function Assistance() {
                 </div>
 
                 {/* ✅ Input Bar */}
-                <div className="w-full max-w-[800px] flex items-center bg-[#0f0f1a] rounded-full mt-4 px-4 py-2 relative">
+                <div className="w-full max-w-[800px] flex items-center bg-[#0f0f1a] rounded-full mt-3 sm:mt-4 px-3 sm:px-4 py-2 relative">
                     {/* ➕ Plus Button */}
                     <div className="relative">
                         <button
                             onClick={() => setShowUploadOptions(!showUploadOptions)}
                             className="p-2 rounded-full bg-gray-600 hover:bg-gray-700 transition"
                         >
-                            <PlusIcon className="w-6 h-6 text-white" />
+                            <PlusIcon className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                         </button>
                         {showUploadOptions && (
-                            <div className="absolute bottom-14 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white rounded-xl shadow-xl p-2 space-y-2 w-56">
-                                <label className="flex items-center gap-2 cursor-pointer hover:bg-gray-700 px-4 py-2 rounded-lg transition">
-                                    <PhotoIcon className="w-5 h-5 text-blue-400" />
+                            <div className="absolute bottom-14 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white rounded-xl shadow-xl p-2 space-y-2 w-44 sm:w-56">
+                                <label className="flex items-center gap-2 cursor-pointer hover:bg-gray-700 px-3 sm:px-4 py-2 rounded-lg transition text-sm sm:text-base">
+                                    <PhotoIcon className="w-4 h-4 sm:w-5 sm:h-5 text-blue-400" />
                                     Upload from Device
                                     <input
                                         type="file"
@@ -196,7 +196,7 @@ function Assistance() {
                                 </label>
                                 <button
                                     onClick={handleDriveUpload}
-                                    className="block w-full text-left hover:bg-gray-700 px-4 py-2 rounded-lg transition"
+                                    className="block w-full text-left hover:bg-gray-700 px-3 sm:px-4 py-2 rounded-lg transition text-sm sm:text-base"
                                 >
                                     Upload from Drive
                                 </button>
@@ -211,38 +211,38 @@ function Assistance() {
                         onChange={(e) => setInput(e.target.value)}
                         onKeyDown={handleKeyPress}
                         placeholder="Type your message..."
-                        className="flex-1 bg-transparent text-white text-lg px-4 outline-none"
+                        className="flex-1 bg-transparent text-white text-sm sm:text-lg px-2 sm:px-4 outline-none"
                     />
 
                     {/* Voice Button */}
                     <button
                         onClick={startVoiceRecognition}
-                        className="p-2 rounded-full bg-transparent hover:bg-white/10 transition ml-2"
+                        className="p-2 rounded-full bg-transparent hover:bg-white/10 transition ml-1 sm:ml-2"
                     >
-                        <MicrophoneIcon className="w-6 h-6 text-white" />
+                        <MicrophoneIcon className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                     </button>
 
                     {/* Send / Pause Button */}
                     {loading ? (
                         <button
                             onClick={handlePause}
-                            className="ml-3 px-5 py-2 rounded-full font-semibold flex items-center justify-center gap-2 bg-gray-700/60 hover:bg-gray-600/80 transition-all duration-300 shadow-md"
+                            className="ml-2 sm:ml-3 px-4 sm:px-5 py-2 rounded-full font-semibold flex items-center justify-center gap-2 bg-gray-700/60 hover:bg-gray-600/80 transition-all duration-300 shadow-md"
                         >
-                            <FaPause className="w-5 h-5 text-white" />
+                            <FaPause className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
                         </button>
                     ) : (
                         <button
                             onClick={handleSend}
                             disabled={!input.trim()}
-                            className={`ml-3 px-5 py-2 rounded-full font-semibold flex items-center justify-center gap-2 transition-all duration-300
+                            className={`ml-2 sm:ml-3 px-4 sm:px-5 py-2 rounded-full font-semibold flex items-center justify-center gap-2 transition-all duration-300
                                 ${
                                     !input.trim()
                                         ? "bg-gray-500 cursor-not-allowed"
                                         : "bg-gradient-to-r from-green-500 to-blue-500 hover:from-green-600 hover:to-blue-600 shadow-lg hover:scale-105"
                                 }`}
                         >
-                            <IoIosSend className="w-5 h-5 text-white" />
-                            <span className="text-white">Send</span>
+                            <IoIosSend className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
+                            <span className="hidden sm:inline text-white">Send</span>
                         </button>
                     )}
                 </div>

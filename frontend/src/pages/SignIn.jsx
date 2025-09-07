@@ -51,9 +51,11 @@ function SignIn() {
         { email: Email, password: Password },
         { withCredentials: true }
       );
-
+      // console.log(result.data)
+      
       if (result.status === 200) {
         setUserData(result.data.user);
+        localStorage.setItem("token", result.data.token);
         navigate("/choose-mode");
       } else {
         setError(result.data.message || "Invalid credentials");

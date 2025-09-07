@@ -12,6 +12,7 @@ function VoiceAssistant() {
   const assistantName = userData?.assistantName || "Your Assistant";
   const assistantImage =
     userData?.assistantImage || frontendImage || "/default-avatar.png";
+  const userName = userData?.name || "Sir";
 
   const [listening, setListening] = useState(false);
   const [recognizedText, setRecognizedText] = useState("");
@@ -19,6 +20,9 @@ function VoiceAssistant() {
   const [loading, setLoading] = useState(false);
 
   const recognitionRef = useRef(null);
+  useEffect(() => {
+    console.log("Assistant Name:", assistantName);
+  }, []);
 
   useEffect(() => {
     const SpeechRecognition =
@@ -108,7 +112,11 @@ function VoiceAssistant() {
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ prompt: text }),
+          body: JSON.stringify({ 
+            prompt: text , 
+            assistantName: assistantName || "Your Assistant", 
+            userName: userName || "Sir" 
+          }),
         }
       );
 

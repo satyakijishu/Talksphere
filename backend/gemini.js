@@ -50,7 +50,7 @@ const geminiMultiModalResponse = async (prompt, base64Image = null, model = proc
  * @param {string} model - Model to use (default from env or fallback)
  * @returns {Promise<string>} - Clean JSON response string.
  */
-const geminiResponse = async (prompt, model = process.env.GEMINI_MODEL || "gemma-3n-e4b-it") => {
+const geminiResponse = async (prompt,assistantName,userName, model = process.env.GEMINI_MODEL || "gemma-3n-e4b-it") => {
     try {
         if (!prompt) throw new Error("Prompt is required");
         
@@ -65,6 +65,9 @@ const geminiResponse = async (prompt, model = process.env.GEMINI_MODEL || "gemma
                         {
 text: `
 You are an intelligent AI assistant. Provide JSON responses only.
+If the user asks about your name , respond with "${assistantName}".
+If the user asks about their name , respond with "${userName}".
+If the user greets you then the response should include a greeting with appropriate greetings that include their name "${userName}" and also include your name "${assistantName}" and then say how you can assist them.
 Output formats:
 1. General question:
 {

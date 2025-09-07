@@ -10,6 +10,11 @@ import { useNavigate } from "react-router-dom";
 function Assistance() {
     const { userData, frontendImage } = useContext(UserContext);
     const navigate = useNavigate();
+    const assistantName = userData?.assistantName || "Your Assistant";
+  const assistantImage =
+    userData?.assistantImage || frontendImage || "/default-avatar.png";
+  const userName = userData?.name || "Sir";
+
 
     const [messages, setMessages] = useState([]);
     const [input, setInput] = useState("");
@@ -35,7 +40,7 @@ function Assistance() {
             const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/chat`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ prompt: input })
+                body: JSON.stringify({ prompt: input, assistantName: assistantName || "Your Assistant", userName: userName || "Sir" })
             });
             const data = await response.json();
 

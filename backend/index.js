@@ -65,11 +65,12 @@ const verifyToken = (req, res, next) => {
 app.post("/api/chat", async (req, res) => {
     try {
         const prompt = req.body;
+        console.log("Received prompt:", prompt);
         if (!prompt) {
             return res.status(400).json({ success: false, message: "Prompt is required" });
         }
 
-        const textResponse = await geminiResponse(prompt.prompt);
+        const textResponse = await geminiResponse(prompt.prompt , prompt.assistantName, prompt.userName);
 
         // Parse the Gemini response
         let parsedResponse;

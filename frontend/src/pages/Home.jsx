@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import bgVideo from "../assets/bg-video.mp4";
 import animationData from "../assets/animation.json";
@@ -22,7 +22,11 @@ function Home() {
   const { user } = useContext(UserContext);
 
   const handleGetStarted = () => {
-    navigate(user ? "/choose-mode" : "/signin");
+    if(localStorage.getItem("userData")){
+      navigate("/choose-mode");
+    } else {
+      navigate("/signin");
+    }
   };
 
   const features = [
@@ -221,7 +225,7 @@ function Home() {
           {/* Social Icons */}
           <div className="flex gap-4 sm:gap-5 text-lg sm:text-2xl text-gray-400">
             <a
-              href="https://github.com/yourprofile"
+              href="https://github.com/satyakijishu"
               target="_blank"
               rel="noreferrer"
               className="hover:text-cyan-400 transition"
@@ -229,7 +233,7 @@ function Home() {
               <FaGithub />
             </a>
             <a
-              href="https://linkedin.com/in/yourprofile"
+              href="https://www.linkedin.com/in/satyaki-nandi/"
               target="_blank"
               rel="noreferrer"
               className="hover:text-cyan-400 transition"
@@ -237,7 +241,7 @@ function Home() {
               <FaLinkedin />
             </a>
             <a
-              href="https://instagram.com/yourprofile"
+              href="https://www.instagram.com/_j.i.s.h.u._/?hl=en"
               target="_blank"
               rel="noreferrer"
               className="hover:text-cyan-400 transition"
